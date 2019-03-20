@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>块级元素</title>
+    <style>    
+      .box {
+        padding: 10px;
+        background-color: #cd0000;
+      }
+      .box > img {
+        float: left;
+      }
+
+      .clear:after {
+        content: "";
+        display: list-item;
+        clear: both;
+      }
+
+      .inline-table {
+        display: inline-table;
+        width: 128px;
+        margin-left: 10px;
+        border: 1px solid #cad5eb;
+      }
+
+      .inline-table > p {
+        display: table-cell;
+      }
+    </style>
+</head>
+<body>
+  <div class="box clear">
+      <img src="../../../Pictures/无政府主义.jpg">
+  </div>
+
+  和文字平起平坐的表格：<div class="inline-table">
+      <p>第1列</p>
+      <p>第2列</p>
+  </div>
+</body>
+</html>
