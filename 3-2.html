@@ -103,6 +103,14 @@
     .wrap li {
       display: inline-block;
     }
+
+    .div {
+      width: 100px;
+      padding: 20px;
+      border: 20px solid;
+
+      margin: auto;
+    }
   </style>
 </head>
 <body>
@@ -161,6 +169,10 @@
         <li><img src="../../../Pictures/无政府主义.jpg"></li>
       </ul>
     </div>
+
+    <div class="div">
+      此时元素的offsetWidth是：<span id="divWidth"></span>
+    </div>
 </body>
 <script>
   var btn = document.getElementById('btnMore'), 
@@ -177,5 +189,10 @@
     scrollX: true,
     scrollY: false
   });
+
+  var eleShowWidth = document.getElementById('divWidth');
+  if (eleShowWidth) {
+    eleShowWidth.innerHTML = eleShowWidth.parentNode.offsetWidth;
+  }
 </script>
 </html>
