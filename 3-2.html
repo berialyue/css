@@ -111,6 +111,87 @@
 
       margin: auto;
     }
+
+    .container {
+      width: 280px;
+      margin: 0 auto;
+      padding: 40px 0;
+      background-color: #f0f3f9;
+      animation: width 2s infinite alternate;
+    }
+
+    @keyframes width {
+      from { width: 200px; }
+      to { width: 280px; }
+    }
+
+    .textarea {
+      padding: 9px 8px;
+      border: 1px solid #d0d0d5;
+      border-radius: 4px;
+      background-color: #fff;  
+    }
+
+    .textarea > textarea {
+      width: 100%;
+      line-height: 20px;
+      padding: 0;
+      border: 0 none;
+      outline: 0 none;
+      background: none;
+      resize: none;
+    }
+
+    .box {
+      display: inline-block;
+      white-space: nowrap;
+      background-color: #cd0000;
+    }
+    
+    .text {
+      display: inline-block;
+      width: 100%;
+      background-color: #34538b;
+      color: #fff;
+    }
+
+    .box1 {
+      height: 160px;
+      padding: 30px;
+      box-sizing: border-box;
+      background-color: #beceeb
+    }
+    .child {
+      height: 100%;
+      background: #cd0000;
+    }
+    .rel {
+      position: relative;
+    }
+    .rel > .child {
+      width: 100%;
+      position: absolute;
+    }
+
+    .box2 {
+      display: inline-block;
+      position: relative;
+    }
+
+    .prev, .next {
+      width: 50%;height: 100%;
+      position:absolute;
+      top: 0;
+      opacity: .5;
+    }
+    .prev {
+      left: 0;
+      background-color: #cd0000;
+    }
+    .next {
+      right: 0;
+      background-color: #34538b;
+    }
   </style>
 </head>
 <body>
@@ -172,6 +253,30 @@
 
     <div class="div">
       此时元素的offsetWidth是：<span id="divWidth"></span>
+    </div>
+
+    <div class="container">
+      <div class="textarea">
+        <textarea rows="5" placeholder="色块是容器"></textarea>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="../../../Pictures/无政府主义.jpg" alt="">
+      <span class="text">红色背景是父级</span>
+    </div>
+
+    <div class="box1">
+      <div class="child">高度100px</div>
+    </div>
+    <div class="box1 rel">
+      <div class="child">高度160px</div>
+    </div>
+
+    <div class="box2">
+      <a href="javascrpit:" class="prev" title="上一张">上一张</a>
+      <a href="javascrpit:" class="next" title="下一张">下一张</a>
+      <img src="../../../Pictures/无政府主义.jpg" alt="">
     </div>
 </body>
 <script>
