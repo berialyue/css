@@ -130,3 +130,23 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
 
 1. 设定显式的高度值
 2. 使用绝对定位
+
+### 3.3 CSS min-width/max-width和min-height/max-height二三事
+
+#### 3.3.1 为流体而生的min-width/max-width
+
+#### 3.3.2 与众不同的初始值
+
+- width/height的默认值为auto。
+- min-width/min-height的初始值也是auto。
+- max-width/max-height的初始值为none。
+
+#### 3.3.3 超越！important，超越最大
+
+1. 超越！important是指max-width会覆盖添加!important的width属性
+2. 超越最大是指在min-width和max-width冲突的时候min-width会覆盖max-width
+
+#### 3.3.4 任意高度元素的展开收起动画技术
+
+- 从0px到auto是无法计算的，因此无法形成过渡或动画效果。
+- max-height的值比height计算值大的时候，元素的高度就是height属性的计算值
