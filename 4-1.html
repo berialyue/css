@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>4-1</title>
+  <style>
+    div::before {
+      content: url(../../../Pictures/无政府主义.jpg);
+      display: block;
+      width:200px;
+      height:200px;
+    }
+
+    .src {
+      display: inline-block;
+      width: 256px;
+      height: 192px;
+      color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .src:not([src]) {
+      visibility: hidden;
+    }
+    .src::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f3f9;
+      visibility: hidden;
+    }
+    .src::after {
+      content: attr(alt);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      line-height: 30px;
+      background-color: rgba(0, 0, 0, .5);
+      color: white;
+      font-size: 14px;
+      transform: translateY(100%);
+      transition: transform .2s;
+      visibility: visible;
+    }
+    .src:hover::after {
+      transform: translateY(0)
+    }
+
+    .content:not([src]) {
+      content:url(../../../Pictures/无政府主义.jpg)
+    }
+
+    .emoji:hover {
+      content:url(../../../Pictures/无政府主义.jpg)
+    }
+
+    h1 {
+      content:url(../../../Pictures/无政府主义.jpg)
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+
+  <img data-src="../../../Pictures/无政府主义.jpg" class="src" alt="无政府主义">
+  <p><button>设置src属性显示图片</button></p>
+
+  1.常规实现
+  <img src="../../../Pictures/无政府主义.jpg">
+  2.content属性实现
+  <img class="content">
+
+  <img src="../../../Pictures/庄晓曼.jpg" class="emoji">
+
+  <h1>无政府主义</h1>
+</body>
+<script>
+  var eleButton =document.querySelector('button'),
+      eleImg = document.querySelector('img');
+  
+  if(eleButton && eleImg) {
+    var initValueButton = eleButton.innerHTML;
+    var srcImage = eleImg.getAttribute('data-src');
+    eleImg.removeAttribute('data-src');
+    eleButton.addEventListener('click', function() {
+      if(this.innerHTML === initValueButton) {
+        this.innerHTML = '移除src属性';
+        eleImg.setAttribute('src', srcImage)
+      } else {
+        this.innerHTML = initValueButton;
+        eleImg.removeAttribute('src')
+      }
+    });
+  }
+</script>
+</html>
