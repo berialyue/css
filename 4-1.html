@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>4-1</title>
   <style>
-    div::before {
+    .div::before {
       content: url(../../../Pictures/无政府主义.jpg);
       display: block;
       width:200px;
@@ -62,10 +62,25 @@
     h1 {
       content:url(../../../Pictures/无政府主义.jpg)
     }
+
+    .box {
+      width: 216px;
+      padding: 10px;
+      border: 10px solid #cd0000;
+      margin:auto;
+    }
+
+    .box:empty {
+      border-style: dashed;
+    }
+
+    .pseudo::after {
+      content:'伪元素生成内容'
+    }
   </style>
 </head>
 <body>
-  <div></div>
+  <div class="div"></div>
 
   <img data-src="../../../Pictures/无政府主义.jpg" class="src" alt="无政府主义">
   <p><button>设置src属性显示图片</button></p>
@@ -78,6 +93,15 @@
   <img src="../../../Pictures/庄晓曼.jpg" class="emoji">
 
   <h1>无政府主义</h1>
+
+  <h4>有内容</h4>
+  <div class="box">有内容</div>
+  <h4>无内容</h4>
+  <div class="box"></div>
+  <h4>空格也算内容</h4>
+  <div class="box"> </div>
+  <h4>伪元素不算内容</h4>
+  <div class="box pseudo"></div>
 </body>
 <script>
   var eleButton =document.querySelector('button'),
