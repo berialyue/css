@@ -190,9 +190,27 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
     - CSS世界中的替换元素的固有尺寸有一个很重要的特性，就是“我们是无法改变这个替换元素内容的固有尺寸的”
 
 4. 替换元素和非替换元素的距离有多远
-    - 替换元素和非替换元素之间只隔了一个src属性
-    - 替换元素和非替换元素之间只隔了一个CSS content属性
+    1. 替换元素和非替换元素之间只隔了一个src属性
+    2. 替换元素和非替换元素之间只隔了一个CSS content属性
 5. content与替换元素关系剖析
     1. 使用content生成的文本无法选中、无法复制
     2. 不能左右:emtey伪类
     3. content动态生成值无法获取
+
+#### 4.1.2 content内容生成技术——::before/::after伪元素技术
+
+1. content辅助元素生成
+2. content字符内容生成
+3. content图片生成
+4. 了解content开启闭合符号生成
+5. content attr属性值内容生成
+6. 深入理解content计数器
+    1. 属性counter-rest，作用是给计数器起个名字
+    2. 属性counter-increment，就是计数器递增
+        - 普照源唯一，每普照一次，普照源就增加一次计数值
+        - 计数器的数值变化遵循HTML渲染顺序，遇到一个increment计数器就变化，什么时候counter输出就输出此时的计数值
+        - counter-rest可以一次命名两个计数器，increment也可以，用空格隔开
+        - 变化的值不一定是1，可以灵活设置
+        - 值还可以为none或inherit
+    3. 方法counter()/counters()
+7. content内容生成的混合特性
