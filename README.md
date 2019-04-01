@@ -214,3 +214,37 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
         - 值还可以为none或inherit
     3. 方法counter()/counters()
 7. content内容生成的混合特性
+
+### 4.2 温和的 padding 属性
+
+#### 4.2.1 padding 与元素的尺寸
+
+在设置box-sizing:border-box时，如果padding足够大，那么width也无能为力
+
+内联元素的padding在垂直方向同样会影响布局，影响视觉表现。只是因为内联元素没有可视宽度和可视高度的说法，垂直方向的行为表现完全受line-height和vertical-align的影响，视觉上病没有改变和上一行下一行内容的间距，所以我们就感觉垂直padding没有起作用。
+
+这样我们就可以在不影响当前布局的情况下，优雅地增加链接或按钮的点击区域的大小。
+
+对于非替换元素的内联元素，不仅padding不会加入行盒高度的计算，margin和border也都是如此，都是不计算高度，但实际上在内联盒周围发生了渲染。
+
+#### 4.2.2 padding 的百分比值
+
+1. 和margin属性不同，padding属性不支持负值
+2. padding支持百分比值，但是无论是水平方向还是垂直方向都是相对于宽度计算的
+    - 对于内联元素
+        1. 同样是基于宽度计算
+        2. 默认的高度和宽度细节有差异
+        3. padding会断行
+
+#### 4.2.3 标签元素内置的 padding
+
+1. ol/ul 列表内置 padding-left，但是单位是px不是em
+2. 很多表单元素都内置padding
+    - 所有浏览器<input>/<textarea>输入框内置 padding
+    - 所有浏览器<button>按钮内置 padding
+    - 部门浏览器<select>下拉内置 padding，如Firefox、IE8
+    - 所有浏览器<radio>/<checkbox>按钮内置 padding
+    - <button> 按钮元素的 padding最难控制
+        - 推荐一个既语义良好行为保留，同时UI效果棒兼容性好的实现小技巧，就是用<label>元素，<label>元素的for属性和<button>元素的id值对应即可
+
+#### 4.2.4 padding 与图形绘制
