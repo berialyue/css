@@ -248,3 +248,22 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
         - 推荐一个既语义良好行为保留，同时UI效果棒兼容性好的实现小技巧，就是用<label>元素，<label>元素的for属性和<button>元素的id值对应即可
 
 #### 4.2.4 padding 与图形绘制
+
+### 4.3 激进的 margin 属性
+
+#### 4.3.1 margin与元素尺寸以及相关布局
+
+1. 元素尺寸的相关概念
+    - 元素尺寸包括padding和border，也就是元素的border box尺寸，原生DOM API中是offsetWidth和offsetHeight
+    - 元素内部尺寸包括padding，但不包括border，也就是元素的padding box尺寸，原生DOM API中是clientWidth和clientHeight
+    - 元素外部尺寸包括padding、border和margin，也就是元素的margin box尺寸，没有对应的原生API
+2. margin与元素的内部尺寸
+    - 只有元素是“充分利用可用空间”的状态时，margin才可以改变元素的可视尺寸
+    - 只要宽度设定，margin就无法改变元素尺寸
+    - 只要元素的尺寸表现符合“充分利用可用空间”，无论是垂直方向还是水平方向，都可以通过margin改变尺寸
+    - 对于普通流体元素，margin智能改变元素水平方向尺寸
+    - 对于具有拉伸特性的绝对定位元素，则水平或垂直方向都可以
+3. margin与元素的外部尺寸
+    - 垂直方向margin无法改变元素的内部尺寸，但可以改变外部尺寸
+    - margin对尺寸的影响都是针对具有块状特性的元素而言，对于纯内联元素不适用
+    - 内联元素垂直方向的margin是没有任何影响的，既不会影响外部尺寸，也不会影响内部尺寸
