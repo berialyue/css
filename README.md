@@ -244,9 +244,7 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
     - 所有浏览器<button>按钮内置 padding
     - 部门浏览器<select>下拉内置 padding，如Firefox、IE8
     - 所有浏览器<radio>/<checkbox>按钮内置 padding
-    - <button> 按钮元素的 padding最难控制
-        - 推荐一个既语义良好行为保留，同时UI效果棒兼容性好的实现小技巧，就是用<label>元素，<label>元素的for属性和<button>元素的id值对应即可
-
+    - <button> 按钮元素的 padding最难控制:推荐一个既语义良好行为保留，同时UI效果棒兼容性好的实现小技巧，就是用<label>元素，<label>元素的for属性和<button>元素的id值对应即可
 
 #### 4.2.4 padding 与图形绘制
 
