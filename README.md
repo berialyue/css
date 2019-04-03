@@ -240,11 +240,12 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
 
 1. ol/ul 列表内置 padding-left，但是单位是px不是em
 2. 很多表单元素都内置padding
-    - 所有浏览器<input>/<textarea>输入框内置 padding
-    - 所有浏览器<button>按钮内置 padding
-    - 部门浏览器<select>下拉内置 padding，如Firefox、IE8
-    - 所有浏览器<radio>/<checkbox>按钮内置 padding
-    - <button> 按钮元素的 padding最难控制:推荐一个既语义良好行为保留，同时UI效果棒兼容性好的实现小技巧，就是用<label>元素，<label>元素的for属性和<button>元素的id值对应即可
+    - 所有浏览器input标签和textarea标签输入框内置 padding
+    - 所有浏览器button标签按钮内置 padding
+    - 部门浏览器select下拉内置 padding，如Firefox、IE8
+    - 所有浏览器radio标签/checkbox标签按钮内置 padding
+    - button按钮元素的 padding最难控制
+        - 推荐一个既语义良好行为保留，同时UI效果棒兼容性好的实现小技巧，就是用label元素，label元素的for属性和button元素的id值对应即可
 
 #### 4.2.4 padding 与图形绘制
 
@@ -320,7 +321,7 @@ margin的百分比值无论是水平方向还是垂直方向都是相对于宽�
 #### 4.3.5 margin无效情形解析
 
 1. display计算值inline的非替换元素的垂直margin是无效的
-2. 表格中<tr>和<td>元素或者设置display计算值是table-cell或table-row的元素的margin都是无效的
+2. 表格中tr和td元素或者设置display计算值是table-cell或table-row的元素的margin都是无效的
     - 计算值是table-caption、table或inline-table则没有问题
     - ::first-letter伪元素也可以解析margin
 3. margin合并的时候，更改margin值可能是没有效果的
