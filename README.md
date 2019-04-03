@@ -267,3 +267,66 @@ margin一旦设定具体宽度和高度值，其本身的尺寸是不会因margi
     - 垂直方向margin无法改变元素的内部尺寸，但可以改变外部尺寸
     - margin对尺寸的影响都是针对具有块状特性的元素而言，对于纯内联元素不适用
     - 内联元素垂直方向的margin是没有任何影响的，既不会影响外部尺寸，也不会影响内部尺寸
+
+#### 4.3.2 margin 的百分比值
+
+margin的百分比值无论是水平方向还是垂直方向都是相对于宽度计算的
+
+#### 4.3.3 正确看待CSS世界里的margin合并
+
+1. 什么是margin合并
+    - 块级元素的margin-top和margin-bottom有时会合并为单个外边距
+    - 不包括浮动和定位元素
+    - 只发生在垂直方向
+2. margin合并的3种场景
+    1. 相邻兄弟元素margin合并
+    2. 父级和第一个/最后一个元素
+        - 阻止margin-top合并
+            1. 父元素设置为块状格式化上下文元素
+            2. 父元素设置border-top值
+            3. 父元素设置padding-top值
+            4. 父元素和第一个子元素之间添加内联元素进行分隔
+        - 阻止margin-bottom合并
+            1. 父元素设置为块状格式化上下文元素
+            2. 父元素设置border-bottom值
+            3. 父元素设置padding-bottom值
+            4. 父元素和最后一个子元素之间添加内联元素进行分隔
+            5. 父元素设置height、min-height或max-height
+    3. 空块级元素的margin合并
+        - 阻止空元素的margin合并
+            1. 设置垂直方向的border
+            2. 设置垂直方向的padding
+            3. 里面添加内联元素，直接键入空格是无用的
+            4. 设置height或min-height
+3. margin合并的计算规则
+    1. 正正取大值
+    2. 正负值相加
+    3. 负负取负值
+4. margin合并的意义
+    1. 兄弟元素的margin合并是为了让图文信息的排版更加舒服自然
+    2. 父子margin合并是为了在页面中任何地方嵌套或直接放入任何裸div元素，都不会影响原来的块状布局
+    3. 自身margin合并是为了可以避免不小心遗落或者生成的空标签影响排版和布局
+
+#### 4.3.4 深入理解CSS中的margin:auto
+
+- margin:auto的填充规则如下：
+    1. 如果一侧定值，一侧auto，则auto是剩余空间大小
+    2. 如果两侧都为auto，则平分剩余空间
+- 出发margin:auto有一个前提条件，就是width或height为auto时。元素是具有对应方向的自动填充特性的
+- 由于绝对定位元素的格式化高度即使父元素height:auto也是支持的，因此，可以在绝对定位下使用margin:auto使块级元素垂直居中对齐
+- 如果里面的元素尺寸比外面的大，auto该如何计算？
+    1. 默认的水平流中，如果里面的元素大，水平方向auto计算后的负值会被当做0来处理，所以不会水平居中
+    2. 垂直方向计算后的负值会保留，所以会垂直居中
+
+#### 4.3.5 margin无效情形解析
+
+1. display计算值inline的非替换元素的垂直margin是无效的
+2. 表格中<tr>和<td>元素或者设置display计算值是table-cell或table-row的元素的margin都是无效的
+    - 计算值是table-caption、table或inline-table则没有问题
+    - ::first-letter伪元素也可以解析margin
+3. margin合并的时候，更改margin值可能是没有效果的
+4. 绝对定位元素非定位方位的margin值“无效”
+    - 绝对定位元素的渲染是独立的，所以margin无法影响兄弟元素，所以看起来就像是无效的
+5. 定高容器的子元素的margin-bottom或者宽度定死的子元素的margin-right的定位“失效”
+6. 鞭长莫及导致的margin无效
+7. 内联特性导致的margin无效
