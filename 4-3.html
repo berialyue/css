@@ -74,6 +74,79 @@
     .column-right {
       background-color: #cd0000;
     }
+
+    .container {
+      max-width: 1920px;
+      height: 384px;
+      background: url(demo.jpg) no-repeat center;
+    }
+    .container > h2 {
+      font-size: 128px;
+      margin-top: 100px;
+      color: #fff;
+    }
+
+    .father1 {
+      width: 300px;
+      background-color: gray;
+    }
+
+    .son1 {
+      width: 200px;
+      height: 120px;
+      margin-right: 80px;
+      margin-left: auto;
+      background-color: #cd0000;
+    }
+
+    .father2 {
+      width: 300px;
+      height: 150px;
+      background-color: gray;
+      position: relative;
+    }
+
+    .son2 {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #cd0000;
+      width: 200px;
+      height: 100px;
+      margin: auto;
+    }
+
+    .father3 {
+      width: 200px;
+      height: 150px;
+      background-color: gray;
+      position: relative;
+    }
+
+    .son3 {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #cd0000;
+      width: 300px;
+      height: 150px;
+      margin: auto;
+    }
+
+    .father4 {
+      height: 100px;
+      background-color: gray
+    }
+
+    .son4 {
+      height: 80px;
+      margin-bottom: 100px;
+      background-color: #cd0000
+    }
   </style>
 </head>
 <body>
@@ -114,6 +187,36 @@
     <input type="button" id="leftMore" value="更多正方观点">
     <input type="button" id="rightMore" value="更多反方观点">
   </div>
+
+  <div class="container">
+    <h2>CSS世界</h2>
+  </div>
+
+  <div class="father1">
+    <div class="son1"></div>
+  </div>
+
+  <br>
+
+  <div class="father2">
+    <div class="son2"></div>
+  </div>
+
+  <br>
+
+  <div class="father3">
+    <div class="son3"></div>
+  </div>
+
+  <br>
+
+  <div class="father4">
+    <div class="son4"></div>
+  </div>
+
+  <br>
+  
+  <div class="father4"></div>
 </body>
 <script>
   var $ = function(id) {
