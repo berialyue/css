@@ -330,3 +330,37 @@ margin的百分比值无论是水平方向还是垂直方向都是相对于宽�
 5. 定高容器的子元素的margin-bottom或者宽度定死的子元素的margin-right的定位“失效”
 6. 鞭长莫及导致的margin无效
 7. 内联特性导致的margin无效
+
+### 4.4 功勋卓著的 border 属性
+
+#### 4.4.1 为什么border-width不支持百分比
+
+border-width支持若干关键字：
+
+- thin：等同于1px
+- medium：默认，等同于3px
+- thick：等同于4px
+
+#### 4.4.2 了解各种border-style类型
+
+1. border-style:none
+    - 默认值
+    - 重置边框样式时，可以一起写border: 0 none;这样写渲染性能最高
+2. border-style:solid
+3. border-style:dashed
+4. border-style:double
+    - double类型的最小边框宽度为3px，这时double才有效果
+5. 其他border-style类型
+    - inset、outset、groove、ridge风格老土过时，兼容性惨不忍睹
+
+#### 4.4.3 border-color 和 color
+
+1. border-color的默认颜色就是color
+2. 其他类似特性的CSS属性还有outline、box-shadow和text-shadow等
+
+#### 4.4.4 border 与透明边框效果
+
+1. 右下方background定位的技巧
+    - 默认background背景图片是相对于padding box定位的，所以，计算background-position:100%的位置时不会吧border-width计算在内
+2. 优雅增加点击区域大小
+3. 三角等图形绘制
