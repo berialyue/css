@@ -364,3 +364,8 @@ border-width支持若干关键字：
     - 默认background背景图片是相对于padding box定位的，所以，计算background-position:100%的位置时不会吧border-width计算在内
 2. 优雅增加点击区域大小
 3. 三角等图形绘制
+
+#### 4.4.5 border 与图形构建
+
+#### 4.4.6 border 等高布局技术
+
