@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>4-4</title>
   <style>
-    .box {
+    .box1 {
       width: 150px;
       height: 150px;
       overflow: hidden;
@@ -87,10 +87,90 @@
       border: 10px solid;
       border-color: #f30 transparent transparent;
     }
+
+    .san1 {
+      width: 10px;
+      border: 10px solid;
+      border-color: #f30 transparent transparent;
+    }
+
+    .san2 {
+      width: 0;
+      border-width: 10px 20px;
+      border-style: solid;
+      border-color: #f30 transparent transparent;
+    }
+
+    .san3 {
+      width: 0;
+      border-width: 10px 20px;
+      border-style: solid;
+      border-color: #f30 #f30 transparent transparent;
+    }
+
+  .button {
+    display: inline-block;
+    line-height: 36px;
+    padding: 0 40px;
+    color: #fff;
+    background-color: #cd0000;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .button::before, .button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-style: solid;
+  }
+
+  .button::before {
+    top: -2px;
+    border-width: 0 2px 2px;
+    border-color: transparent transparent  #cd0000;
+  }
+
+  .button::after {
+    bottom: -2px;
+    border-width: 2px 2px 0;
+    border-color: #cd0000 transparent transparent;
+  }
+
+/* 导航背景区border创建 */
+  .box { 
+    border-left: 150px solid #333;
+    background-color: #f0f3f9;
+  }
+  /* 清除浮动影响，不能使用overflow:hidden */
+  .box:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  /* 布局主结构 */
+  .box > nav {
+    width: 150px;
+    margin-left: -150px;
+    float: left;
+  }
+  .box > section {
+      overflow: hidden;
+  }
+  /* 导航列表和模块列表 */
+  .nav {
+      line-height: 40px;
+      color: #fff;
+  }
+  .module {
+      line-height: 40px;
+  }
+
   </style>
 </head>
 <body>
-  <div class="box">
+  <div class="box1">
       <div class="dotted"></div>
   </div>
   
@@ -104,6 +184,27 @@
   <label for="search" class="icon-clear"></label>
 
   <div class="san"></div>
+
+  <div class="san1"></div>
+
+  <div class="san2"></div>
+  
+  <div class="san3"></div>
+
+  <a href="" class="button">我是按钮</a>
+
+  <div class="box">
+    <nav>
+      <h3 class="nav">导航1</h3>
+    </nav>
+    <section>
+      <div class="module">模块1</div>
+    </section>
+  </div>
+
+  <input type="button" id="navMore" value="更多导航">
+  <input type="button" id="moduleMore" value="更多模块">
+  
 </body>
 <script>
   var eleLabel = document.querySelector('label[for="search"]'),
@@ -113,6 +214,28 @@
       eleLabel.onclick = function() {
           eleSearch.value = '';
       };
+  }
+
+  var navMore = document.getElementById('navMore'),
+    moduleMore = document.getElementById('moduleMore');
+
+  if (navMore && moduleMore) {
+    var nav = document.querySelector('nav'), 
+        section = document.querySelector('section');
+    var navIndex = 1, sectionIndex = 1;
+    var rand = function() {
+        return 'f' + (Math.random() + '') .slice(-1);
+    };
+    navMore.onclick = function() {
+        navIndex++;
+        nav.insertAdjacentHTML('beforeEnd', 
+          '<h3 class="nav">导航'+ navIndex +'</h3>');
+    };
+    moduleMore.onclick = function() {
+        sectionIndex++;
+        section.insertAdjacentHTML('beforeEnd', 
+          '<div class="module" style="background:#'+ [rand(), rand(), rand()].join('') +'">模块'+ sectionIndex +'</div>');
+    };  
   }
 </script>
 </html>
