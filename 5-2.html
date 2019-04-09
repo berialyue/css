@@ -5,8 +5,148 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>5-2</title>
+  <style>
+    .test1, .test2 {
+      margin: 24px 0;
+      border: 1px solid #ccc;
+      background: #eee;
+    }
+    .test1 {
+      font-size: 16px;
+      line-height: 0;
+    }
+    .test2 {
+      font-size: 0;
+      line-height: 16px;
+    }
+
+    .test {
+      font-family: simsun;
+      font-size: 80px;
+      line-height: 120px;
+      background-color: yellow;
+    }
+    .test > span {
+      background-color: white;
+    }
+
+    .test3 {
+      display: inline-block;
+      font-family: simsun;
+      font-size: 24px;
+      background-color: yellow;
+    }
+    .test3 > span {
+      outline: 1px solid red;
+    }
+    .test > span:first-child::after {
+      content: '\A';
+      white-space: pre;
+    }
+    .test-1 {
+      line-height: 2;
+    }
+    .test-2 {
+      line-height: 1;
+    }
+    .test-3 {
+      line-height: 0.5;
+    }
+
+    .box {
+      width: 280px;
+      line-height: 120px;
+      background-color: #f0f3f9;
+      margin: auto;
+    }
+    .content {
+      display: inline-block;
+      line-height: 20px;
+      margin: 0 20px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .box1 {
+      font-size: 14px;
+    }
+    .box-1 {
+      line-height: 1.5;
+    }
+    .box-2 {
+      line-height: 150%;
+    }
+    .box-3 {
+      line-height: 1.5em;
+    }
+    h3, p {
+      margin: 0;
+    }
+    h3 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 20px;
+    }
+
+    .box2 {
+      width: 280px;
+      margin: 1em auto;
+      outline: 1px solid #beceeb;
+      background: #f0f3f9;
+    }
+    .box3 {
+      line-height: 96px;
+    }
+    .box3 span {
+      line-height: 20px;
+    }
+    .box4 {
+      line-height: 20px;
+    }
+    .box4 span {
+      line-height: 96px;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="test1">我的高度是？</div>
+  <div class="test2">我的高度是？</div>
+
+  <div class="test"><span>sphinx</span></div>
+
+  <div class="test3 test-1">
+    <span>第一行</span><br><span>第二行</span>
+  </div>
+  <div class="test3 test-2">
+    <span>第一行</span><br><span>第二行</span>
+  </div>
+  <div class="test3 test-3">
+    <span>第一行</span><br><span>第二行</span>
+  </div>
+
+  <div class="box">
+    <div class="content">基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助</div>
+  </div>
+
+  <div class="box1 box-1">
+    <h3>标题</h3>
+    <p>内容</p>
+  </div>
+  <div class="box1 box-2">
+    <h3>标题</h3>
+    <p>内容</p>
+  </div>
+  <div class="box1 box-3">
+    <h3>标题</h3>
+    <p>内容</p>
+  </div>
+
+  <div class="box2 box3">
+    <span>span: line-height:20px</span>
+  </div>
+  <div class="box2 box4">
+    <span>span: line-height:20px</span>
+  </div>
 </body>
 </html>
