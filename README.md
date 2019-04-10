@@ -433,3 +433,24 @@ line-height 的默认值是 normal，还支持数值、百分比值和长度值
 #### 5.2.4 内联元素 line-height 的“大值特性”
 
 无论内联元素 line-height 如何设置，最终父级元素的高度都是由数值大的那个 line-height 决定的
+
+### 5.3 line-height 的好朋友 vertical-align
+
+#### 5.3.1 vertical-align 家族基本认识
+
+vertical-align 属性值分为以下4类：
+
+1. 线类：如baseline（默认值）、top、middle、bottom
+2. 文本类，如text-top、text-bottom
+3. 上标下标类：如sub、super
+4. 数值百分比类：如20px、2em、20%等
+    - 应该分为数值类和百分比类
+
+根据计算值的不同，相对于基线往上还是往下偏移，取决于vertical-align的计算值是正值还是负值，如果是负值，往下偏移，如果是正值，往上偏移
+
+vertical-align的数值属性值在实际开发时实用性很强
+
+- 兼容性很好
+- 可以精确控制内联元素的垂直对齐位置
+
+vertical-align 属性的百分比值是相对于line-height 的计算值计算的
