@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>5-3</title>
+  <style>
+    .box {
+      display: inline-block;
+      line-height: 32px;
+    }
+    .box > span {
+      font-size: 24px;
+    }
+
+    #id {
+      line-height: 20px;
+    }
+    .icon-arrow {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: url(./arrow.png)
+    }
+    .valign-1 {
+      vertical-align: middle;
+    }
+    .valign-2 {
+      vertical-align: -5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span>文本</span>
+  </div>
+  
+  <span id="vAlign">字母x</span><img
+  src="../../../Pictures/庄晓曼.jpg" width="128">
+  <p>文字的vertical-align值:</p><select
+  id="select">
+    <option value="baseline">baseline</option>
+    <option value="10px">10px</option>
+    <option value="-10px">-10px</option>
+    <option value="1em">1em</option>
+    <option value="-1em">-1em</option>
+    <option value="50%">50%</option>
+    <option value="-50%">-50%</option>
+  </select>
+  <div id="main">
+    <p>请选择<i class="icon-arrow"></i></p>
+    <p>请选择<i class="icon-arrow valign-1"></i></p>
+    <p>请选择<i class="icon-arrow valign-2"></i></p>
+  </div>
+</body>
+<script>
+  var eleSelect = document.getElementById('select');
+  var eleValign = document.getElementById('vAlign');
+
+  if(eleSelect && eleValign) {
+    eleSelect.onchange = function() {
+      eleValign.style.verticalAlign = this.value
+    };
+  }
+</script>
+</html>
