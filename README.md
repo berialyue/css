@@ -454,3 +454,42 @@ vertical-align的数值属性值在实际开发时实用性很强
 - 可以精确控制内联元素的垂直对齐位置
 
 vertical-align 属性的百分比值是相对于line-height 的计算值计算的
+
+#### 5.3.2 vertical-align 作用的前提
+
+vertical-align 属性智能作用在display计算值为 inline、inline-block、inline-table或inline-cell的元素上。
+
+浮动和绝对定位会让元素块状化，从而使vertical-align属性无效
+
+table-cell元素设置vertical-align垂直对齐的是子元素，但是作用的并不是子元素，而是table-cell元素自身。
+
+#### 5.3.3 vertical-align 和 line-height 之间的关系
+
+font-size 越大字符的基线位置越靠下，因为文字默认全部都是基线对齐，所以当字号大小不一致的两个文字在一起的时候，彼此就会发生上下位移，如果位移距离足够大，就会超过行高的限制，而导致出现意料之外的高度
+
+如何解决常见的图片底部留有间隙的问题
+
+- 图片块状化
+- 容器line-height足够小
+- 容器font-size足够小，此方法要生效，需要容器的line-heigt和font-size相关
+- 图片设置其他vertical-align属性
+
+#### 5.3.4 深入理解vertical-align 线性类属性值
+
+1. inline-block 与 baseline
+    - 一个inline-block元素，如果里面没有内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘，否则其基线就是元素里面最后一行内联元素的基线
+    - 改变“幽灵空白节点”的基线位置可以使用font-size，当字体足够小时，基线和中线会重合在一起
+    - 20px图标对齐的处理办法
+        1. 图标高度和当前行高都是20px
+        2. 图标标签里面永远有字符
+        3. 图标CSS不适用overflow:hidden 保证基线为链字符的基线，但是要让里面潜在的字符不可见
+        4. 如果项目字号都是16px，那么图标规格和默认行号设为24px可能会更适合一些
+2. 了解vertical-align:top/bottom
+    1. vertical-align:top就是垂直上边缘对齐，具体定义如下
+        - 内联元素：元素顶部和当前行框盒子的顶部对齐
+        - table-cell元素：元素顶padding边缘和表格行的顶部对齐
+    2. vertical-align:bottom的规则与top类似，就是把顶部换成底部，上边缘换成下边缘
+3. vertical-align:middle 与近似垂直居中
+    - 内联元素：元素的垂直中心点和行框盒子基线往上1/2 x-height 处对齐
+    - table-cell元素：单元格填充盒子相对于外面的表格行居中对齐
+    - 通常做法是设置font-size为0，整个字符X缩小为看不见的点，根据line-height的半行间距上下等分原则，这个点正好是整个容器的垂直中心位置，这样就可以实现真正意义上的垂直居中对齐了
