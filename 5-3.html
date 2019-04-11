@@ -29,11 +29,119 @@
     .valign-2 {
       vertical-align: -5px;
     }
+
+    .cell {
+      height: 128px;
+      display: table-cell;
+      background-color: #f0f3f9;
+      text-align: center;
+    }
+    .cell img {
+      height: 96px;
+    }
+    .cell-1 img {
+      vertical-align: middle;
+    }
+    .cell-2 {
+      vertical-align: middle;
+    }
+
+    .box2 {
+      width: 280px;
+      outline: 1px solid #aaa;
+    }
+    .box2 img {
+      height: 96px;
+    }
+    .box-1 img {
+      display: block;
+      margin: atuo;
+    }
+    .box-2 {
+      line-height: 0;
+    }
+    .box-3 {
+      font-size: 0;
+    }
+    .box-4 img{
+      vertical-align: middle;
+    }
+    .box3 {
+      width: 400px;
+      display: block;
+      outline: 1px solid #aaa;
+    }
+    .box3 > img {
+      height: 96px;
+      margin-top: -1000px;
+    }
+
+    .box4 {
+      max-width: 360px;
+      background-color: #f0f3f9;
+      text-align: justify;
+    }
+    .box4 img {
+      width: 96px;
+      height: 72px;
+    }
+    .justify-fix {
+      display: inline-block;
+      width: 96px;
+    }
+    .box-1 .justify-fix,
+    .box-2 .justify-fix,
+    .box-3 .justify-fix,
+    .box-4 .justify-fix {
+        outline: 1px dashed red;
+    }
+    .box-2 {
+        line-height: 0;
+    }
+    .box-3 {
+        font-size: 0;
+    }
+    .box-4 {
+        /* 此处对应HTML中的&nbsp;很关键 */
+        line-height: 0;
+    }
+
+    .box5 {
+      line-height: 20px;
+    }
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      white-space: nowrap;
+      letter-spacing: -1em;
+      text-indent: -999em;
+    }
+    .icon::before {
+      content:  '\3000';
+    }
+    .icon-delete {
+      background: url(./delete.png) no-repeat center;
+    }
+    .large {
+      font-size: 20px;
+    }
+
+    .box6 {
+      width: 280px;
+      line-height: 128px;
+      background-color: #f0f3f9;
+      font-size: 16px;
+    }
+    .box6 img {
+      height: 96px;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
   <div class="box">
-    <span>文本</span>
+    x<span>文本x</span>
   </div>
   
   <span id="vAlign">字母x</span><img
@@ -52,6 +160,108 @@
     <p>请选择<i class="icon-arrow"></i></p>
     <p>请选择<i class="icon-arrow valign-1"></i></p>
     <p>请选择<i class="icon-arrow valign-2"></i></p>
+  </div>
+
+  <div class="box1">
+    <h4>图片vertical-align:middle</h4>
+    <p class="cell cell-1"><img src="../../../Pictures/庄晓曼.jpg"></p>
+  </div>
+  <div class="box1">
+    <h4>table-cell元素vertical-align:middle</h4>
+    <p class="cell cell-2"><img src="../../../Pictures/庄晓曼.jpg"></p>
+  </div>
+
+  <h4>间歇示意：</h4>
+  <div class="box2">
+    <img src="../../../Pictures/庄晓曼.jpg">
+  </div>
+  <h4>图片block块状清除间隙：</h4>
+  <div class="box2 box-1">
+    <img src="../../../Pictures/庄晓曼.jpg">
+  </div>
+  <h4>容器line-height:0清除间歇</h4>
+  <div class="box2 box-2">
+    <img src="../../../Pictures/庄晓曼.jpg">
+  </div>
+  <h4>容器font-size:0清除间歇</h4>
+  <div class="box2 box-3">
+    <img src="../../../Pictures/庄晓曼.jpg">
+  </div>
+  <h4>图片vertical-align设置清除</h4>
+  <div class="box2 box-4">
+    x<img src="../../../Pictures/庄晓曼.jpg">
+  </div>
+
+  <div class="box3">
+    x<img src="../../../Pictures/庄晓曼.jpg" alt="">
+  </div>
+
+  <div class="box4">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+  </div>
+  <h4>辅助空标签outline高亮：</h4>
+  <div class="box4 box-1">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+  </div>
+  <h4>容器line-height:0清除间隙：</h4>
+  <div class="box4 box-2">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+  </div>
+  <h4>容器font-size:0清除间隙：</h4>
+  <div class="box4 box-3">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+  </div>
+  <h4>标签插入空格同时line-height:0：</h4>
+  <div class="box4 box-4">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <img src="../../../Pictures/庄晓曼.jpg">
+      <i class="justify-fix">&nbsp;</i>
+      <i class="justify-fix">&nbsp;</i>
+      <i class="justify-fix">&nbsp;</i>
+  </div>
+
+  <div class="box5">
+    <h4>1. 空标签后面跟随文本</h4>
+    <p><i class="icon icon-delete"></i>删除</p>
+    <h4>2. 标签里面有“删除”文本</h4>
+    <p><i class="icon icon-delete">删除</i>随便什么文字</p>
+    <h4>3. 字号变大</h4>
+    <p class="large">
+      <i class="icon icon-delete"></i>删除
+    </p>
+    <p class="large">
+      <i class="icon icon-delete">删除</i>随便什么文字
+    </p>
+
+    <div class="box6">
+      <img src="../../../Pictures/庄晓曼.jpg" alt="">x
+    </div>
   </div>
 </body>
 <script>
