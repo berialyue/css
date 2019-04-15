@@ -495,3 +495,26 @@ font-size 越大字符的基线位置越靠下，因为文字默认全部都是�
     - 通常做法是设置font-size为0，整个字符X缩小为看不见的点，根据line-height的半行间距上下等分原则，这个点正好是整个容器的垂直中心位置，这样就可以实现真正意义上的垂直居中对齐了
 
 #### 5.3.5 深入理解vertical-align文本类属性值
+
+文本类属性值得就是text-top和text-bottom
+
+- vertical-align:text-top —— 盒子的顶部和父级内容区域的顶部对齐
+- vertical-align:text-bottom —— 盒子的地步和父级内容区域的底部对齐
+
+#### 5.3.6 简单了解vertical-align上标下标类属性值
+
+上标下标类属性值得就是sub和super
+
+- vertical-align:super —— 提高盒子的基线到父级核实的上标基线位置
+- vertical-align:sub —— 降低盒子的基线到父级核实的下标基线位置
+
+#### 5.3.7 无处不在的 vertical-align 
+
+top/bottom和baseline/middle，切着对齐看边缘看行框盒子，后者和字符x打交道。
+
+#### 5.3.8 基于 vertical-align 属性的水平垂直居中弹框
+
+1. 节省了很多JavaScript定位代码，也不需要浏览器resize事件处理，当弹框内容动态变化的时候，也无需重新定位
+2. 性能更改、渲染更快
+3. 可以很灵活的控制垂直居中的比例
+4. 容易设置overflow:auto可以实现弹框高度超过一屏时依然能看见屏幕外的内容
