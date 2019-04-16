@@ -137,6 +137,36 @@
       height: 96px;
       vertical-align: middle;
     }
+
+    .container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,.5);
+      text-align: center;
+      white-space: nowrap;
+      font-size: 0;
+      z-index: 99;
+    }
+    .container::after {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    .dialog {
+      display: inline-block;
+      vertical-align: middle;
+      height: 100px;
+      width: 200px;
+      font-size: 14px;
+      border-radius: 6px;
+      background-color: #cd0000;
+      text-align: center;
+      white-space: normal;
+    }
   </style>
 </head>
 <body>
@@ -261,6 +291,12 @@
 
     <div class="box6">
       <img src="../../../Pictures/庄晓曼.jpg" alt="">x
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="dialog">
+      <div class="content">内容占位</div>
     </div>
   </div>
 </body>
