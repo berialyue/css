@@ -566,3 +566,28 @@ clear 属性只有块级元素才有效果，而 ::after 等伪元素默认都�
 
 1. 如果clear:both 元素前面的元素就是 float 元素，则 margin-top 负值即使设为-9999px，也没有任何效果
 2. clear:both 后面的元素依旧会发生文字环绕的现象
+
+### 6.3 CSS 世界的结界——BFC
+
+#### 6.3.1 BFC 的定义
+
+BFC是块级格式化上下文
+
+如果一个元素具有BFC，则内部子元素无论如何都不会影响到外部元素。所以，BFC元素不可能发生margin重叠；BFC元素也可以用来清除浮动的影响。
+
+什么时候会出发BFC？
+
+1. html根元素
+2. float的值不为none
+3. overflow的值为auto、scroll、hidden
+4. display的值为table-cell、table-caption、inline-block
+5. position的值部位relative或static
+
+#### 6.3.2 BFC 与浮动布局
+
+普通流体元素设置overflow:hidden 后，会自动填满容器中除浮动元素以外的剩余空间，形成自适应布局的效果
+
+基于BFC的浮动布局有以下优点：
+
+1. 自适应内容由于封闭而更健壮，容错性更强
+2. 自适应内容自动填满浮动以外区域，无须关心浮动元素宽度，可以整站大规模应用
