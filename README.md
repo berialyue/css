@@ -591,3 +591,53 @@ BFC是块级格式化上下文
 
 1. 自适应内容由于封闭而更健壮，容错性更强
 2. 自适应内容自动填满浮动以外区域，无须关心浮动元素宽度，可以整站大规模应用
+
+### 6.4 最佳结界 overflow
+
+想彻底清除浮动的影响，最适合的属性不是clear 而是 overflow，一般使用 overflow:hidden，利用BFC的“结界”特性彻底解决浮动对外部或兄弟元素的影响。
+
+#### 6.4.1 overflow 剪裁界线 border box
+
+当子元素内容超出容器宽度限制的时候，剪裁的边界是 border box 的内边缘，而非 padding box 的内边缘。
+
+如果想实现元素剪裁同时四周留有间隙的效果，可以试试透明边框，此时内间距padding 属性是无能为力的
+
+Chrome 浏览器下，如果容易可滚动，则padding-bottom 也算在滚动尺寸之内，IE和Firefox浏览器忽略padding-bottom
+
+#### 6.4.2 了解 overflow-x 和overflow-y
+
+支持的属性值和overflow一样
+
+- visible：默认值
+- hidden：剪裁
+- scroll：滚动条区域一直存在
+- auto：不足以滚动时没有滚动条，可以滚动时滚动条出现
+
+除非overflow-x 和overflow-y 的属性值都是visible，否则visible会当成auto来解析
+
+#### 6.4.3 overflow 与滚动条
+
+1. 在PC端，无论什么浏览器，默认滚动条均来自于html，而不是body标签
+    - PC端获取窗体滚动高度 document.documentElement.scrollTop
+    - 移动端 document.body.scrollTop
+2. 滚动条会占用容器的可用宽度或高度
+    - IE7以上版本，Chrome、Firefox浏览器滚动栏所占据的宽度均是17px
+
+#### 6.4.4 依赖 overflow 的样式表现
+
+#### 6.4.5 overflow 与锚点定位
+
+1. 锚点定位行为的触发条件
+    1. URL地址中的锚链与锚点元素对应并有交互行为
+    2. 可focus的锚点元素处于focus状态
+2. 锚点定位作用的本质
+    - 是通过改变容器滚动高度或宽度来实现的
+    - 普通元素和窗体可同时滚动时，会由内而外触发所有可滚动窗体的锚点行为定位
+    - 元素设置了overflow:hidden声明，里面内容高度溢出的时候，滚动依然存在，仅仅滚动条不存在
+    - 基于父元素scrollTop 值来实现自定义滚动条效果
+        1. 实现简单，边界无须判断
+        2. 可与原生的scroll事件天然集成、无缝对接
+        3. 无须改变子元素的结构
+        4. 缺点：
+            1. 无法添加类似Bounce回弹动效
+            2. 渲染要比一般的渲染慢

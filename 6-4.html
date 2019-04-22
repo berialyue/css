@@ -5,8 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>6-4</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 80px;
+      margin: auto;
+      padding: 10px;
+      border: 10px solid;
+      overflow: hidden;
+    }
+
+    .box1 {
+      width: 20em;
+      height: 10em;
+      border: 1px solid #ddd;
+      overflow: hidden;
+    }
+    .list {
+      line-height: 10em;
+      background: #ddd;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="box">
+    <img src="../../../Pictures/庄晓曼.jpg" width="256" height="192">
+  </div>
+
+  <div class="box1">
+    <div class="list" id="one">1</div>
+    <div class="list" id="two">2</div>
+    <div class="list" id="three">3</div>
+    <div class="list" id="four">4</div>
+  </div>
+  <div class="link">
+    <div class="click" href="#one">1</div>
+    <div class="click" href="#two">2</div>
+    <div class="click" href="#three">3</div>
+    <div class="click" href="#four">4</div>
+  </div>
 </body>
 </html>
