@@ -641,3 +641,59 @@ Chrome 浏览器下，如果容易可滚动，则padding-bottom 也算在滚动�
         4. 缺点：
             1. 无法添加类似Bounce回弹动效
             2. 渲染要比一般的渲染慢
+
+### 6.5 float 的兄弟 position:absolute
+
+当 absolute 和 float 同时存在的时候，float 属性是无任何效果的
+
+元素一旦position属性为 absolute 或 fixed，其 display 计算值就是bloack或table
+
+#### 6.5.1 absolute 的包含块
+
+普通元素的百分比宽度是相对于父元素的 content box 宽度计算的，而绝对定位元素的宽度宽度是相对于第一个 position 不为 static 的祖先元素计算的
+
+1. 根元素被称为初始包含块（很多情况是html根元素），其尺寸等于浏览器可视窗口的大小
+2. 对于其他元素， 如果该元素的 position 是 relative 或者 statci，则包含块由其最近的块容器祖先盒的 content box 边界形成
+3. 如果元素 position:fixed，则包含块是初始包含块
+4. 如果元素 position:absolute，则包含块由最近的 position 不为static的祖先元素建立
+    - 如果该祖先元素是纯inline元素，则规则略复杂
+        - 假设给内联元素的前后各生成一个宽度为0的内联盒子，则这两个内联盒子的padding box 外面的包围盒就是内联元素的包含块
+        - 如果该内联元素被跨行分割了，那么包含块是未定义的，也就是CSS2.1规范并没有明确定义，由浏览器自行发挥
+    - 否则，包含块由该祖先的padding box边界形成
+
+如果没有符合条件的祖先元素，则包含块是初始包含块
+
+和常规元素相比，absolute 绝对定位元素的包含块有以下3个明显差异
+
+1. 内联元素也可以作为包含块所在的元素
+    1. absolute一般都是用来布局，而内联元素主要用来图文展示
+    2. 理解和学习的成本比较高
+        - 内联元素的包含块可以受::first-line伪元素影响，但不受::first-letter影响
+        - 内联元素的包含块范围比较稳固，不会受line-height等属性影响
+    3. 兼容性问题
+        - Firefox浏览器的包含块仅覆盖第一行，而IE和Chrome浏览器包含块由第一行开头和最后一行结束的内联盒子共同决定
+2. 包含块所在的元素不是父块级元素，而是最近position不为static的祖先元素或根元素
+    - height:100%和height:inherit的区别
+        - 对于普通元素，两者没什么区别
+        - 对于绝对定位元素，height:100%是第一个具有定位属性值得祖先元素的高度，而height:inherit则是单纯的父元素的高度继承
+3. 边界是padding box而不是content box
+
+#### 6.5.2 具有相对特性的无依赖 absolute 绝对定位
+
+absolute 是非常独立的CSS属性值，其样式和行为表现不依赖其他任何CSS属性就可以完成
+
+1. 各类图标定位
+2. 超越常规布局的排版
+3. 下拉列表的定位
+4. 占位符效果模拟
+5. 进一步深入“无依赖绝对定位”
+    - 虽然说元素position:absolute 后的display计算值都是块状的，但是其定位的位置和没有设置position:absolute 时候的位置相关
+
+#### 6.5.3 absolute 与 text-align
+
+text-align可以改变absolute元素的位置
+
+具体的渲染原理如下：
+
+1. 由于img是内联水平，p标签中存在一个宽度为0，看不见摸不着的幽灵空白节点，也是内联水平，于是受text-align:center影响而水平居中显示
+2. img设置了position:absolute，表现为无依赖绝对定位，因此在幽灵空白节点后面定位显示，同时由于图片不占据空间，这里的幽灵空白节点正好在p元素水平中心位置显示，于是我们就看到图片从p元素水平中间位置显示的效果
