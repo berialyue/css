@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>6-6</title>
+  <style> 
+    .constr {
+      width: 80%;
+      margin: auto;
+      background-color: #f0f3f9;
+    }
+    .alignright {
+      height: 0;
+      text-align: right;
+      overflow: hidden;
+    }
+    .alignright::before {
+      content:'\2002';
+    }
+    .follow {
+      position: fixed;
+      bottom: 100px;
+      z-index: 1;
+    }
+    .follow > img {
+      display: block;
+      margin: 10px;
+    }
+
+    .box {
+      width: 300px;
+      height: 100px;
+      background-color: #f0f3f9;
+      overflow: auto;
+    }
+    .box > img {
+      width: 256px;
+      height: 192px;
+      position: absolute;
+    }
+
+    .box1 {
+      width: 300px;
+      height: 100px;
+      background-color: #f0f3f9;
+      position: relative;
+      overflow: auto;
+    }
+    .box1 > img {
+      width: 256px;
+      height: 192px;
+      position: absolute;
+    }
+    .clip {
+      position: absolute;
+      clip: rect(0 0 0 0);
+    }
+
+    .table {
+      width: 300px;
+      display: inline-table;
+      table-layout: fixed;
+    }
+    .td {
+      display: table-cell;
+    }
+    .td img {
+      width: 300px;
+      height: 200px;
+    }
+    .pk-1 {
+      margin-top: -50px;
+    }
+    .pk-2 {
+      position: relative;
+      top: -50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="constr">
+    <div class="alignright">
+      <span class="follow">
+        <img src="./circle.png">
+        <img src="./backtop.png">
+      </span>
+    </div>
+  </div>
+
+  <h4 class="title">滚动条不出现</h4>
+  <div class="box">
+    <img src="../../../Pictures/庄晓曼.jpg" alt="">
+  </div>
+  <h4 class="title">绝对定位元素不跟随滚动</h4>
+  <div class="box">
+    <img src="../../../Pictures/庄晓曼.jpg" alt="">
+    <p>如果仅仅是绝对定位元素，是不会出现滚动条的。但是，如果绝对定位元素和大量非绝对定位元素在一起，要知道，绝对定位元素会让元素出现滚动条的，此时，滚动此滚动条（移动端手指垂直方向滑动），会发现绝对定位的图片并没有跟着滚动。这个效果就是这里要展示的绝对定位元素不跟随滚动特性。</p>
+  </div>
+
+  <h4 class="title1">滚动条出现</h4>
+  <div class="box1">
+    <img src="../../../Pictures/庄晓曼.jpg" alt="">
+  </div>
+  <h4 class="title1">图片clip剪裁不可见</h4>
+  <div class="box1">
+    <img src="../../../Pictures/庄晓曼.jpg" alt="" class="clip">
+  </div>
+
+  <div class="table">
+    <div class="td">
+      <h4>使用margin定位</h4>
+      <img src="../../../Pictures/庄晓曼.jpg" alt="" onclick="this.className='pk-1';">
+      <p>点击图片应用<code>.pk-1</code></p>
+    </div>
+    <div class="td">
+      <h4>使用relative定位</h4>
+      <img src="../../../Pictures/庄晓曼.jpg" alt="" onclick="this.className='pk-2';">
+      <p>点击图片应用<code>.pk-2</code></p>
+    </div>
+  </div>
+</body>
+</html>

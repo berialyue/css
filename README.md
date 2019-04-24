@@ -697,3 +697,90 @@ text-align可以改变absolute元素的位置
 
 1. 由于img是内联水平，p标签中存在一个宽度为0，看不见摸不着的幽灵空白节点，也是内联水平，于是受text-align:center影响而水平居中显示
 2. img设置了position:absolute，表现为无依赖绝对定位，因此在幽灵空白节点后面定位显示，同时由于图片不占据空间，这里的幽灵空白节点正好在p元素水平中心位置显示，于是我们就看到图片从p元素水平中间位置显示的效果
+
+### 6.6 absolute 与 overflow
+
+绝对定位元素不总是被父级overflow属性剪裁，尤其当overflow在绝对定位元素及其包含块之间。
+
+如果overflow不是定位元素，同时绝对定位元素和overflow容器之间也没有定位元素，则overflow无法对absolute元素进行剪裁
+
+由于position:fixed固定定位元素的包含块是根元素，因此，除非是窗体滚动，否则所有overflow裁剪规则对固定定位都不适用
+
+overflow元素自身transform的时候，Chrome和Opera浏览器下的overflow剪裁是无效的
+
+当遇到absolute元素被剪裁或fixed固定定位失效时，可以看看是否是因为transform引起的
+
+### 6.7 absolute 与 clip
+
+clip属性要想起作用，position属性必须是absolute或fixed
+
+#### 6.7.1 重新认识的clip属性
+
+1. fixed固定定位的剪裁
+2. 最佳可访问性隐藏
+
+clip剪裁被称为最佳可访问性隐藏的原因是，它具有更强的普遍适应性，任何元素、任何场景都可以无障碍使用
+
+#### 6.7.2 深入了解clip的渲染
+
+使用clip进行剪裁的元素其clientWidth和clientHeight包括样式计算的宽高还是原来的大小
+
+clip隐藏仅仅是决定了哪些部分是可见的，非可见部分无法响应点击事件等，虽然视觉上隐藏，但是元素的尺寸依然是原本的尺寸
+
+### 6.8 absolute 的流体特性
+
+#### 6.8.1 当absolute 遇到 left/top/right/bottom属性
+
+#### 6.8.2 absolute的流体特性
+
+绝对定位元素的流体特性成立的条件是：对立方向同时发生定位的时候
+
+#### 6.8.3 absolute 的 margin:auto 居中
+
+绝对定位元素的margin:auto的填充规则和普通流体元素一模一样
+
+1. 如果一侧定值，一侧auto，auto为剩余空间大小
+2. 如果两侧均是auto，平分剩余空间
+
+### 6.9 position:relative 才是大哥
+
+#### 6.9.1 relative 对 absolute 的限制
+
+relative让absolute元素依然保持在正常的文档流中
+
+#### 6.9.2 relative 与定位
+
+relative定位有两大特性：一是相对自身，二是无侵入
+
+相对定位元素的left\top\right\bottom的百分比值是相对于包含块计算的，而不是自身
+
+top和bottom这两个垂直方向的百分比值得计算跟height一致，都是相对高度计算的，如果包含块的高度是0，那么计算值为0，偏移无效
+
+当相对定位元素同时应用对立方向定位值得时候，也就是top\bottom，left\right同时使用的时候，只有一个方向的定位属性会起作用，这与文档流的顺序有关，默认的文档流是从上至下，从左到右
+
+#### 6.9.3 relative的最小化影响原则
+
+1. 尽量不适用relative，如果想定位某元素，看看能否使用无依赖的绝对定位
+2. 如果一定要用relative，则该relative务必最小化
+
+### 6.10 强悍的position:fixed 固定定位
+
+#### 6.10.1 position:fixed不一样的包含块
+
+position:fixed固定定位元素的包含块是根元素，可以近似看成html元素
+
+无依赖的固定定位，利用absolute\fixed元素没有设置left\top\right\bottom的相对定位特性，可以将目标元素定位到想要的位置
+
+#### 6.10.2 position:fixed 的 absolute 模拟
+
+希望元素既有不跟随滚动的固定定位效果，又能被定位元素限制和精准定位
+
+页面的滚动使用普通元素替代，此时滚动元素之外的其它元素自然就有了“固定定位”效果
+
+#### 6.10.3 position:fixed 与背景锁定
+
+- 如果是移动端项目，阻止touchmove事件的默认行为就可以阻止黑幕下的元素滚动
+- 如果是桌面端项目，可以让根元素直接overflow:hidden
+    - 但是Windows操作系统下的浏览器的滚动条占据了一定宽度，滚动条的消失必然会导致页面的可用宽度发生变化，页面会产生晃动问题
+    - 解决方案：消失的滚动条可以用同等宽度的透明边框填充
+
