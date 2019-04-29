@@ -889,3 +889,9 @@ z-index负值的实际用处
 
 ## 第8章 强大的文本处理能力
 
+### 8.1 line-height 的另外一个朋友 font-size
+
+#### 8.1.1 font-size 和 vertical-align 的隐秘故事
+
+line-height 的部分类别属性值是相对于 font-size 计算的，vertical-align 百分比值属性值又是相对于 line-height 计算的，所以 vertical-align 和 font-size 属性有时也是有关联的。
+
