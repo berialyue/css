@@ -895,3 +895,12 @@ z-index负值的实际用处
 
 line-height 的部分类别属性值是相对于 font-size 计算的，vertical-align 百分比值属性值又是相对于 line-height 计算的，所以 vertical-align 和 font-size 属性有时也是有关联的。
 
+#### 8.1.2 理解 font-size 与 ex、em 和 rem 的关系
+
+ex 是字符高度，font-size 值越大，自然 ex 对应的大小也越大
+
+em 是字模的高度，不是字符的高度，1em 的计算值等同于当前元素所在的 font-size 的计算值
+
+要想实现带有缩放性质的弹性布局，使用 rem 是最佳策略，但是 rem 是 CSS3 的单位，IE9 以上才兼容
+
+如果我们使用 SVG 图标，可以使用 em 做单位，这样无论图标是和大号文字还是和小号文字在一起，都能和当前文字大小保持一致
