@@ -937,3 +937,16 @@ font-size 的关键字属性值分为以下两类
 如果 font-size 字号为 0，那么文字会直接被隐藏，哪怕 font-size 的值为 0.000000001px，也会被处理成 12px，所以如果要隐藏 logo 对应元素的文字，除了 text-indent 缩进隐藏外，还可以设置 font-size:0
 
 ### 8.2 字体属性家族的大家长 font-family
+
+font-family默认值由操作系统和浏览器共同决定
+
+font-family 支持两类属性值，一类是“字体名”，一类是“字体族”
+
+1. 字体族就是使用的对应字体的名称，如果字体包含空格，就需要用引号包起来
+2. 字体族类别
+    - serif:衬线字体
+    - sans-serif:无衬线字体
+    - monospace:等宽字体
+    - cursive:手写字体
+    - fantasy:奇幻字体
+    - system-ui:系统 UI 字体
