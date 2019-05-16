@@ -970,3 +970,64 @@ font-family 支持两类属性值，一类是“字体名”，一类是“字�
 2. 等宽字体与图形呈现
 3. ch 单位与等宽字体布局
     - 1ch 表示一个 0 字符的宽度
+
+#### 8.2.3 中文字体与英文字体
+
+为了规避乱码的风险，字体的属性值一般不使用中文，而是使用英文名称
+
+1. windows 常见内置中文字体和对应英文名称
+    | 字体中文名 | 字体英文名 |
+    | --- | --- |
+    | 宋体 | SimSun |
+    | 黑体 |  SimHei |
+    | 微软雅黑 | Microsoft Yahei |
+    | 微软正黑体 | Microsoft JhengHei |
+    | 楷体 | KaiTi |
+    | 新宋体 | NSimSun |
+    | 仿宋 | FangSong |
+2. OS X系统内置中文字体与对应英文名称
+    | 字体中文名 | 字体英文名 |
+    | --- | --- |
+    | 苹方 | PingFang SC |
+    | 华文黑体 | STHeiti |
+    | 华文楷体 | STKaiti |
+    | 华文宋体 | STSong |
+    | 华文仿宋 | STFangsong |
+    | 华文中宋 | STZhongsong|
+    | 华文琥珀 | STHupo |
+    | 华文新魏 | STXinwei |
+    | 华文隶书| STLiti |
+    | 华文行楷 | STxingkai |
+    | 冬青黑体简 | Hiragino Sans GB |
+    | 兰亭黑-简 | Lantinghei SC |
+    | 翩翩体-简 | Hanzipen SC |
+    | 手札体-简 | Hannotate SC |
+    | 宋体-简 | Songti SC |
+    | 娃娃体-简 | Wawati SC |
+    | 魏碑-简 | Weibei SC |
+    | 行楷-简 | Xingkai SC |
+    | 雅痞-简 | Yapi SC |
+    | 圆体-简 | Yuanti SC |
+3. Office 软件安装新增中文字体和对应英文名称
+    | 字体中文名 | 字体英文名 |
+    | --- | --- |
+    | 幼圆 |  YouYuan |
+    | 隶书 | LiSu |
+    | 华文细黑 | STXihei |
+    | 华文楷体 | STKaiti |
+    | 华文宋体 | STSong |
+    | 华文仿宋 | STFangsong|
+    | 华文中宋 | STZhongsong |
+    | 华文彩云 | STCaiyun |
+    | 华文琥珀| STHupo |
+    | 华文新魏 | STXinwei |
+    | 华文隶书 | STLiti |
+    | 华文行楷 | STxingkai |
+    | 方正舒体 | FZShuTi |
+    | 方正姚体 | FZYaoti |
+4. 其他一些中文文字和对应英文名称
+    | 字体中文名 | 字体英文名 |
+    | --- | --- |
+    | 思源黑体 | Source Han Sans CN |
+    | 思源宋体 | Source Han Serif SC |
+    | 文泉驿微米黑 | WenQuanYi Micro Hei |
