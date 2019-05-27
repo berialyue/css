@@ -1092,3 +1092,23 @@ font 缩写一定要带上 font-family，解决方法：
 
 1. 随便找一个系统不存在的字体占位
 2. 利用@font face 规则将我们的字体列表重定义为一个字体
+
+#### 8.4.2 使用关键字值的 font 属性
+
+font 属性除了缩写用法，还支持关键字属性
+
+- caption:活动窗口标题栏使用的字体
+- icon: 图标内容所使用的字体
+- menu: 菜单使用的字体
+- message-box:消息盒里面使用的字体
+- samll-caption:调色板标题所使用的字体
+- status-bar:窗体状态栏使用的字体
+
+caption、icon、message-box 这三个关键字在 Chrome 中是无效的，所以使用 font 属性的时候，要避开这三个关键字
+
+#### 8.4.3 font 关键字属性值的应用价值
+
+html { font: menu; }
+body { font-size: 16px; }
+
+可以让网页的字体跟系统走
