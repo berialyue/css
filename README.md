@@ -1112,3 +1112,6 @@ html { font: menu; }
 body { font-size: 16px; }
 
 可以让网页的字体跟系统走
+
+### 8.5 真正了解@font face 规则
+
