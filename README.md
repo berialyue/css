@@ -1115,3 +1115,23 @@ body { font-size: 16px; }
 
 ### 8.5 真正了解@font face 规则
 
+#### @font face 的本质是变量
+
+@font face 本质上就是一个定义字体或字体集的变量，这个变量不仅仅是简单地自定义字体，还包括字体重命名、默认字体样式设置等
+
+1. font-family：可以看成是一个字体变量
+2. src
+    - svg 格式是为了兼容 iOS 4.1 及其之前的版本
+    - eot 格式是 IE 私有的，IE6 ~ IE8 仅支持这一种字体
+    - woff 是 web open font format， 是专门为 Web 开发而设计的字体格式，Android 4.4 开始全面支持
+    - woff2 是比 woff 尺寸更小的字体，小得非常明显，只是目前此字体仅 Chrome 和 Firefox 支持地比较好
+    - ttf 格式作为系统安装字体比较多，优点在于老版本 Android 也支持
+    - 综上
+        1. svg 格式果断舍弃
+        2. 如果无须兼容 IE8 浏览器，eot 格式果断舍弃
+        3. 如果无须兼容 Android 4.3 之前的版本，ttf 格式果断舍弃
+    - format() 功能符的作用是让浏览器提前知道字体格式，以决定是否需要加载这个字体，而不是加载完成之后再自动判断
+3. font-style：@font face 规则中的 font-style 是用来设置对应字体样式下该使用什么字体
+4. font-weight：@font face 规则中的 font-weight 是用来设置不同字重下该使用什么字体
+    - 响应式图标：指的是字号较大时图标字体细节更丰富，字号较小时图标字体更简单的响应式处理
+5. unicode-range：可以让特定的字符或特定范围的字符使用指定的字体
