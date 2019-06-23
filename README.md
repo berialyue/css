@@ -1155,3 +1155,19 @@ SVG 图标最好满足以下 3 点：
 3. 宽高尺寸最好都大于 200，因为字体生成的时候，坐标值会四舍五入，SVG 尺寸过小导致坐标取值偏差较大，使最终的图标不够精致
 
 ### 8.6 文本的控制
+
+#### 8.6.1 text-indent 与内联元素缩进
+
+用得比较多的是 text-indent 负值隐藏文本内容
+
+text-indent 负值缩进在部分浏览器下会影响元素的 outline 区域，通常需要再设置 overflow:hidden
+
+text-indent 的百分比值是相对于当前元素的“包含块”计算的，而不是当前元素
+
+其他关于 text-indent 的小知识
+
+1. text-indent 仅对第一行内联盒子内容有效
+2. 非替换元素以外的 display 计算值为 inline 的内联元素设置 text-indent 值无效，如果计算值为 inline-block/inline-table 则会生效。如果父级块状元素设置了 text-indent 属性值，子 inline-block/inline-table 需要设置 text-indent:0 重置
+3. input 标签按钮 text-indent 值无效
+4. button 标签按钮 text-indent 值有效，但是存在兼容性差异。在 IE 浏览器下理解为单标签，百分比值按照容器计算。而在 Chrome 或 Firefox 浏览器下标签内还存在其他 Shadow DOM 元素，因此百分比值按照自身的尺寸计算
+5. input 和 textarea 输入框的 text-indent 在低版本 IE 浏览器下有兼容问题
